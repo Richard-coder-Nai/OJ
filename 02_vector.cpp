@@ -12,12 +12,12 @@ using namespace std;
 
 int main(void){
 	vector<int> num(10);
-	cout<<num.size()<<endl;
+	cout<<"num size: "<<num.size()<<endl;
+	cout<<"num capactiy: "<<num.capacity()<<endl;
 
 	for(int i=0; i<num.size(); i++){
 		num[i] = i+1;
 	}
-
 
 	cout<<"num: ";
 	for(auto item : num){
