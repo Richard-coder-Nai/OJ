@@ -7,16 +7,37 @@
 
 #include<iostream>
 #include<string>
+#include<map>
+
 using namespace std;
 
 
 int main(void){
-	int n;
+	int n;	
 	while(cin>>n){
-		for(int i=0; i<n; i++){
-			string tmp_str;
-			cin>>tmp_str;
-			
+		if(n==0) break;
+		else{
+			map<string, int> counter;
+			for(int i=0; i<n; i++){
+				string str;	
+				cin>>str;
+				if(counter.count(str))
+					counter[str]++;
+				else
+					counter[str]=1;
+			}
+
+			string max_str = "";
+			int max_count = -1;
+			for(auto item:counter){
+				//cout<<item.first<<" "<<item.second<<endl;
+				if(item.second>max_count){
+					max_str = item.first;
+					max_count = item.second;
+				}
+			}
+			//cout<<max_count<<endl;
+			cout<<max_str<<endl;
 		}
 	}
 }
