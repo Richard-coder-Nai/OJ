@@ -21,7 +21,7 @@ int char_adder(char c1, char c2){
 	return n1 + n2;
 }
 
-void Sum_fun(string str1, string str2){
+void Sum_fun(int n, string str1, string str2){
 	string big_str, small_str;
 	if(str1.length() > str2.length()){
 		big_str = str1;
@@ -53,9 +53,13 @@ void Sum_fun(string str1, string str2){
 			big_str[i] = int2char(temp);
 		}
 	}
-	if(carry)
-		cout<<1;
+
 	reverse(big_str.begin(),big_str.end());
+	
+	//output
+	cout<<"Case "<<n<<":"<<endl;
+	cout<<str1<<" + "<<str2<<" = ";
+	if(carry) cout<<1;
 	cout<<big_str<<endl;
 
 }
@@ -67,8 +71,11 @@ int main(void){
 	for(int i=0; i<n; i++){
 		string str1, str2;
 		cin>>str1>>str2;
-		Sum_fun(str1, str2);
+		Sum_fun(i+1, str1, str2);
+
+		//avoid presentation Error
+		if(i < n-1)
+			cout<<endl;
 	}
-	
 }
 
