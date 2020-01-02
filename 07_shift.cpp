@@ -11,33 +11,34 @@
 
 using namespace std;
 
-//left shift
-//reverse 3 times
+void print_fun(vector<int> nums){
+	for(auto item:nums)
+		cout<<item<<" ";
+	cout<<endl;
+}
+
+void left_shift(vector<int> nums, int k){
+	reverse(nums.begin(), nums.end());
+	reverse(nums.begin(), nums.end());
+	reverse(nums.begin(), nums.end());
+	print_fun(nums);
+}
+
+void right_shift(vector<int> nums, int k){
+	reverse(nums.begin(), nums.end());
+	reverse(nums.begin(), nums.end());
+	reverse(nums.begin(), nums.end());
+	print_fun(nums);
+}
+
+
 int main(void){
-	vector<int> n;
-	for(int i =0; i<10; i++){
-		n.push_back(i+1);
+	//init vector
+	vector<int> nums(10);
+	for(int i=0; i<nums.size(); i++){
+		nums[i] = i+1;
 	}
-	for(int i =0; i<10; i++){
-		cout<<n[i]<<" ";
-	}
-	cout<<endl;
-
-	reverse(n.begin(), n.end());
-
-	for(int i =0; i<10; i++){
-		cout<<n[i]<<" ";
-	}
-	cout<<endl;
-
-	int k = 5;	
-
-	reverse(n.begin(), n.end()-k);
-	reverse(n.end()-k+1, n.end());
-	for(int i =0; i<10; i++){
-		cout<<n[i]<<" ";
-	}
-
-	cout<<endl;
-
+	print_fun(nums);
+	left_shift();
+	right_shift();
 }
