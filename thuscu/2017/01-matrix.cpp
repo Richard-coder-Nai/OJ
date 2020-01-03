@@ -39,7 +39,7 @@ void row_shift(vector<vector<int>>& matrix, int k){
 	k = k%n;
 	if(k){
 		reverse(matrix.begin(), matrix.end());
-		reverse(matrix.begin(), matrix.begin() + k - 1);
+		reverse(matrix.begin(), matrix.begin() + k);
 		reverse(matrix.begin() + k, matrix.end());
 	}
 }
@@ -60,33 +60,40 @@ int main(void){
 	cin>>n;
 	vector<vector<int>> matrix(n);
 
-	//int test = 0;
+	int test = 0;
 	for(int i=0;i<n; i++){
 		for(int j=0; j<n; j++){
 			int tmp;
-			//test++;
-			cin>>tmp;
-			matrix[i].push_back(tmp);
+			test++;
+			//cin>>tmp;
+			//matrix[i].push_back(tmp);
 			//test
-			//matrix[i].push_back(test);
+			matrix[i].push_back(test);
 		}
 	}
+
 	//test
-	//print_fun(matrix);
-	//cout<<endl;
-	//trans(matrix);
-	//colum_shift(matrix, 2);
-	//print_fun(matrix);
-		
-	cin>>n;
-	for(int i=0;i<n; i++){
-		int cs,k;
-		cin>>cs;
-		if(cs!=1) cin>>k;
-		
-		if(cs==1) trans(matrix);
-		else if(cs == 2) row_shift(matrix, k);
-		else colum_shift(matrix, k);
-	}	
 	print_fun(matrix);
+	cout<<endl;
+
+	cout<<"trans"<<endl;
+	trans(matrix);
+	print_fun(matrix);
+
+	
+	cout<<"colum_shift 2"<<endl;
+	colum_shift(matrix, 2);
+	print_fun(matrix);
+		
+//	cin>>n;
+//	for(int i=0;i<n; i++){
+//		int cs,k;
+//		cin>>cs;
+//		if(cs!=1) cin>>k;
+//		
+//		if(cs==1) trans(matrix);
+//		else if(cs == 2) row_shift(matrix, k);
+//		else colum_shift(matrix, k);
+//	}	
+//	print_fun(matrix);
 }
