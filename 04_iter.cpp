@@ -7,14 +7,31 @@
 
 #include<iostream>
 #include<vector>
+#include<algorithm>
 using namespace std;
 
 
 int main(void){
-	vector<int> vec(100);
-	for(int i=0; i<100; i++){
-		vec[i]=i+1;
-	}
-	for(auto item: vec)
-		cout<<item<<endl;
+	//init
+	vector<int> num_v = {10, 0, 1, 8, 4};
+	for(auto item: num_v)
+		cout<<item<<" ";
+	cout<<endl;
+
+	//sort
+	sort(num_v.begin(), num_v.end());
+	for(auto item: num_v)
+		cout<<item<<" ";
+	cout<<endl;
+
+	//test
+	for(vector<int>::iterator it=num_v.begin(); it!=num_v.end(); *it++)
+		(*it)++;
+	for(auto item: num_v)
+		cout<<item<<" ";
+	cout<<endl;
+
+	for(vector<int>::iterator it=num_v.begin(); it!=num_v.end(); *it++)
+		cout<<*it<<" ";
+	cout<<endl;
 }

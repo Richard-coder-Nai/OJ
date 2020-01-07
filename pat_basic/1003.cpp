@@ -6,9 +6,21 @@
  ************************************************************************/
 
 #include<iostream>
-
+#include<string>
+#include<regex>
 using namespace std;
 
+
+void judge_fun(str){
+	bool valid = true;
+	if(str[0]=='P'){
+		for(int i=1; i<int(str.size()); i++){
+			if	
+		}
+	}
+
+	if(valid) cout<<
+}
 
 int main(void){
 	int n;
@@ -17,7 +29,6 @@ int main(void){
 	string str;
 	for(int i=0; i<n; i++){
 		cin>>str;	
-		for()
-		
+		judge_fun(str);
 	}
 }

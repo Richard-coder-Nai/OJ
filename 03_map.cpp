@@ -17,7 +17,14 @@ int main(void){
 	my_map["zhang"] = 1;
 	cout<<my_map["alex"]<<endl;
 	cout<<my_map["zhang"]<<endl;
+
 	for(auto item:my_map){
 		cout<<item.first<<" "<<item.second<<endl;
 	}
+
+	if(my_map.count("test")==0)
+		cout<<"test does not exisit"<<endl;
+
+	if(my_map.count("zhang"))
+		cout<<"zhang exisits"<<endl;
 }
