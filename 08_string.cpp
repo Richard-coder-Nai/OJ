@@ -7,14 +7,22 @@
 
 #include<iostream>
 #include<string>
+#include<sstream>
 using namespace std;
 
 
 int main(void){
 	string str = "this is a test";
-	cout<<str.size()<<endl; //size = length
-	cout<<str.find("this")<<endl; //find first match index
-	cout<<str.find("test")<<endl; 
+	//size = length
+	cout<<str.size()<<endl; 
+
+	//find first match index
+	cout<<str.find("this")<<endl; 
+
+	//npos can not find
+	if(str.find("z")==str.npos)
+		cout<<"can not find z"<<endl;
+
 	// to uppper
 	for (string:: iterator it=str.begin(); it!=str.end(); it++)
 		*it = toupper(*it);
@@ -25,5 +33,17 @@ int main(void){
 		*it = tolower(*it);
 	cout << str << endl;
 
+	//stirngstream
+	stringstream stream;
+	stream<<str;
+	while(stream>>str)
+		cout<<str<<endl;
 
+	//convert the string to int
+	int n;
+	str="1234";
+	stringstream int_stream;
+	int_stream<<str;
+	while(int_stream>>n)
+		cout<<n<<endl;
 }
