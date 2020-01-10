@@ -7,30 +7,43 @@
 
 #include<iostream>
 #include<string>
-#include<map>
-#include<algorithm>
+#include<vector>
+#include<list>
 
 using namespace std;
 
+void print_fun(int mode, vector<list<string>> table){
+	if(mode){
+		for(int i=0; i<101; i++){
+			if(table[i].size()){
+				for(auto it: table[i]){
+					cout<<it<<" "<<i<<endl;
+				}
+			}
+		}
+	}else{
+		for(int i=100; i>=0; i--){
+			if(table[i].size()){
+				for(auto it: table[i]){
+					cout<<it<<" "<<i<<endl;
+				}
+			}
+		}
+	}
+}
+
+
 int main(void){
-    map<int, string> table;
+	int n, mode;
+	while(cin>>n>>mode){
+		vector<list<string>> table(101); 
+		for(int i=0; i<n; i++){
+			string name;
+			int score;
+			cin>>name>>score;
 
-    int n, mode;
-    cin>>n>>mode;
-    
-    for(int i=0; i<n; i++){
-        int score;
-        string name;
-        cin>>name>>score;
-        table[score]=name;
-    }
-
-    if(mode){
-        for(auto item:table)
-            cout<<item.second<<" "<<item.first<<endl;
-    }
-    else{
-        for(auto item=table.rbegin(); item!=table.rend(); item++)
-            cout<<(*item).second<<" "<<(*item).first<<endl;
-    }
+			table[score].push_back(name);
+		}
+		print_fun(mode, table);
+	}    
 }
