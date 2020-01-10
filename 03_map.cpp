@@ -12,19 +12,28 @@ using namespace std;
 
 
 int main(void){
-	map<string, int> my_map;
-	my_map["alex"] = 1;
-	my_map["zhang"] = 1;
-	cout<<my_map["alex"]<<endl;
-	cout<<my_map["zhang"]<<endl;
+    map<string, int> my_map;
+    my_map["alex"] = 1;
+    my_map["zhang"] = 1;
+    cout<<my_map["alex"]<<endl;
+    cout<<my_map["zhang"]<<endl;
 
-	for(auto item:my_map){
-		cout<<item.first<<" "<<item.second<<endl;
-	}
+    for(auto item:my_map){
+        cout<<item.first<<" "<<item.second<<endl;
+    }
 
-	if(my_map.count("test")==0)
-		cout<<"test does not exisit"<<endl;
+    if(my_map.count("test")==0)
+        cout<<"test does not exisit"<<endl;
 
-	if(my_map.count("zhang"))
-		cout<<"zhang exisits"<<endl;
+    if(my_map.count("zhang"))
+        cout<<"zhang exisits"<<endl;
+
+    map<int, string> test;
+    test[3] = "three";
+    test[1] = "one";
+    test[2] = "tree";
+
+    for(auto item:test){
+        cout<<item.first<<" "<<item.second<<endl;
+    }
 }

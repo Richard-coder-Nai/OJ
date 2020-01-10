@@ -1,8 +1,8 @@
 /*************************************************************************
-	> File Name: 02_vector.cpp
-	> Author: Yang Zhang 
-	> Mail: zyziszy@foxmail.com 
-	> Created Time: Tue 31 Dec 2019 06:35:19 PM CST
+  > File Name: 02_vector.cpp
+  > Author: Yang Zhang
+  > Mail: zyziszy@foxmail.com
+  > Created Time: Tue 31 Dec 2019 06:35:19 PM CST
  ************************************************************************/
 
 #include<iostream>
@@ -23,6 +23,5 @@ int main(void){
 	for(auto item : num){
 		cout<<item<<" ";
 	}
-
 	cout<<endl;
 }
