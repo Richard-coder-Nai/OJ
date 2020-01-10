@@ -13,13 +13,14 @@ using namespace std;
 
 int main(void){
 	string str = "this is a test";
-	//size = length
+
+	// size = length
 	cout<<str.size()<<endl; 
 
-	//find first match index
+	// find first match index
 	cout<<str.find("this")<<endl; 
 
-	//npos can not find
+	// npos can not find
 	if(str.find("z")==str.npos)
 		cout<<"can not find z"<<endl;
 
@@ -33,7 +34,7 @@ int main(void){
 		*it = tolower(*it);
 	cout << str << endl;
 
-	//stirngstream
+	// stirngstream
 	stringstream stream;
 	stream<<str;
 	while(stream>>str)
