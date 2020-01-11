@@ -34,7 +34,7 @@ int main(void){
 		*it = tolower(*it);
 	cout << str << endl;
 
-	// stirngstream
+	// stirngstream split space
 	stringstream stream;
 	stream<<str;
 	while(stream>>str)
@@ -43,8 +43,6 @@ int main(void){
 	//convert the string to int
 	int n;
 	str="1234";
-	stringstream int_stream;
-	int_stream<<str;
-	while(int_stream>>n)
-		cout<<n<<endl;
+	n=atoi(str.c_str());
+	cout<<"n: "<<n<<endl;
 }
