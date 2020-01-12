@@ -7,6 +7,11 @@ my online judge CPP code
 ```vimrc
 autocmd FileType cpp map <F5> <ESC>:w<CR>:!g++ -std=c++11 % && ./a.out<CR>
 
+imap jj <esc>
+imap kk <esc>
+imap jk <esc>
+imap kj <esc>
+
 set syntax=on
 set nu
 set showcmd
