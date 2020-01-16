@@ -33,12 +33,22 @@ int main(void){
 	cout<<"min: "<<*min_element(a.begin(), a.end())<<endl;
 
 	//sort
+	cout<<"sort"<<endl;
 	sort(a.begin(), a.end());
 	for(auto item:a) cout<<item<<" ";
 	cout<<endl;
 
+	//remove
+	cout<<"remove"<<endl;
+	auto it=remove(a.begin(), a.end(), 1);
+	a.erase(it, a.end());
+	for(auto item:a) cout<<item<<" ";
+	cout<<endl;
+
+
 	//unique
-	vector<int>::iterator it = unique(a.begin(), a.end());
+	cout<<"unique"<<endl;
+	it = unique(a.begin(), a.end());
 	a.erase(it, a.end());
 	for(auto item:a) cout<<item<<" ";
 	cout<<endl;
