@@ -6,7 +6,19 @@
  ************************************************************************/
 
 #include<iostream>
+#include<list>
+#include<vector>
 using namespace std;
 
 
+int main(void){
+	//adj list init
+	int n,e;
+	cin>>n>>e;
+	vector<list<int>> adj;
+	adj.assign(e, list<int>());
+	vector<int> in_degree;
+	vector<int> out_degree;
 
+
+}
