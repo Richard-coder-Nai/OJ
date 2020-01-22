@@ -26,6 +26,10 @@ int main(void){
 
 	vector<int> a = {7,1,1,8,9,3,4,1,3,2};
 	for(auto item:a) cout<<item<<" ";
+
+	if(is_sorted(a.begin(), a.end())==false)
+		cout<<"not ordered";
+
 	cout<<endl;
 
 	//max and min element

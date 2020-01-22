@@ -11,6 +11,13 @@
 using namespace std;
 
 
+struct node{
+	int id;
+	int wt;
+	node(int _id,int _weight):id(_id),wt(_weight){}
+};
+
+
 int main(void){
 	//adj list init
 	int n,e;
