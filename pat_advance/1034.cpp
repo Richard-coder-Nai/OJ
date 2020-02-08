@@ -2,18 +2,48 @@
 #include<map>
 #include<string>
 #include<vector>
+#include<set>
 
 using namespace std;
 
+vector<int> father;
+
+
+int find_father(int n){
+	int a = n;
+	while(n != father[n]){
+		n = father[n];
+	}
+
+	while(a != father[n]){
+		int z = father[a];
+		father[a] = n;
+		a = z;
+	}
+	return n;
+}
+
+
+void Union(int n1, int n2){
+	int f1 = find_father(n1);
+	int f2 = find_father(n2);
+
+	if(f1 != f2){
+		father[f1] = f2;
+	}
+}
+
 
 int main(void){
+
 	int n,k;
 	cin>>n>>k;
 
 	map<int, string> index2name;
 	map<string, int> name2index;
 
-	vector<vector<int>> g(2000, vetor<int>(0));
+
+	vector<int> time_table;
 
 	int index=0;
 
@@ -25,27 +55,29 @@ int main(void){
 		if(name2index.count(src)==false){
 			name2index[src]=index;
 			index2name[index]=src;
+			time_table.push_back(time);
+			father.push_back(index);
 			index++;
 		}else{
-			int tmp=name2index[src];
+			int idx = name2index[src];
+			time_table[idx] += time;
 		}
 		if(name2index.count(dest)==false){
 			name2index[dest]=index;
 			index2name[index]=src;
+			time_table.push_back(time);
+			father.push_back(index);
 			index++;
 		}else{
-			int tmp=name2index[dest];
+			int idx = name2index[dest];
+			time_table[idx] += time;
 		}
+		Union(name2index[src], name2index[dest]);
 	}
 
-	map<string, int> name2head;
-	
-	for(auto it:time_table){
-		cout<<it<<" "<<endl;
-	}
-	cout<<endl;
-	for(auto it:name2head){
-		cout<<it.first<<" "<<it.second<<endl;
-	}
+	map<int, int> counter;
+	for(int i=0; i<name2index.size(); i++){
+		int f = find_father(i);
 
+	}
 }
