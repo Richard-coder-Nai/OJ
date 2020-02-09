@@ -7,6 +7,7 @@
 
 #include<iostream>
 #include<vector>
+#include<algorithm>
 using namespace std;
 
 
@@ -23,5 +24,22 @@ int main(void){
 	for(auto item : num){
 		cout<<item<<" ";
 	}
+	cout<<endl;
+
+	cout<<"nums: {1, 10, 0, 1, 8, 4}"<<endl;
+	vector<int> nums = {1, 10, 0, 1, 8, 4};
+	//sort
+	sort(nums.begin(), nums.end());
+
+	//ordered insert
+	//upper_bound is not equal
+	nums.insert(upper_bound(nums.begin(),nums.end(),1),1);
+	for(auto it: nums) cout<<it<<" ";
+		cout<<endl;
+
+	//unique and erase
+	auto it = unique(nums.begin(), nums.end());
+	nums.erase(it, nums.end());
+	for(auto it: nums) cout<<it<<" ";
 	cout<<endl;
 }

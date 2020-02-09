@@ -18,12 +18,23 @@ vector<int> in_seq;
 
 map<int, int> table;
 
+/*
 Tree_node* dfs(int is, int ie, int ps, int pe) {
 	if(ps>pe || is>ie) return NULL;
-	int ri = table[post_seq[pe]];
+	int k = table[post_seq[pe]];
 	Tree_node* node = new Tree_node(post_seq[pe]);
-	node->left = dfs(is, ri - 1, ps, ps + ri - is - 1);
-	node->right = dfs(ri + 1, ie, ps + ri - is, pe - 1);
+	node->left = dfs(is, k - 1, ps, ps + k - is - 1);
+	node->right = dfs(k + 1, ie, ps + k - is, pe - 1);
+	return node;
+}
+*/
+
+Tree_node* dfs(int ps, int pe, int is, int ie) {
+	if(ps>pe || is>ie) return NULL;
+	int k = table[post_seq[pe]];
+	Tree_node* node = new Tree_node(post_seq[pe])-is;
+	node->left = dfs(ps, ps+k-1, is, is+k-1);
+	node->right = dfs(ps+k, pe-1, is+k+1, ie);
 	return node;
 }
 

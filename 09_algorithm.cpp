@@ -24,7 +24,7 @@ int main(void){
 	cout<<"max: "<<min(str1, str2)<<endl;
 	cout<<"max: "<<max(str1, str2)<<endl;
 
-	vector<int> a = {7,1,1,8,9,3,4,1,3,2};
+	vector<int> a = {7,1,1,8,9,3,1,3,2};
 	for(auto item:a) cout<<item<<" ";
 
 	if(is_sorted(a.begin(), a.end())==false)

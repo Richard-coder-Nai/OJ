@@ -7,10 +7,18 @@
 
 #include<iostream>
 #include<iomanip>
+#include<cstdio>
+
 using namespace std;
+
+#define INT_MAX 2147483647
+#define INT_MIN (-INT_MAX - 1)
 
 
 int main(void){
 	float x=10.0/3;
+	printf("%.4f\n", x);
 	cout<<setiosflags(ios::fixed)<<setprecision(2)<<x<<endl;
+	cout<<INT_MAX<<endl;
+	cout<<INT_MIN<<endl;
 }

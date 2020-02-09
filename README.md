@@ -22,6 +22,7 @@ set autoindent
 set cindent
 set noexpandtab
 set smartindent 
+set hlsearch 
 
 inoremap ' ''<ESC>i
 inoremap " ""<ESC>i
