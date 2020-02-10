@@ -2,6 +2,10 @@
 
 my online judge CPP code 
 
+### [zyzisyz's leetcode profile](https://leetcode-cn.com/u/zyzisyz/)
+
+------
+
 ## vimrc
 
 ```vimrc
