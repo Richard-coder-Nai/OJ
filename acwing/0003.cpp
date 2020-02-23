@@ -1,25 +1,34 @@
 #include<iostream>
+#include<vector>
 
 using namespace std;
 
 const int N = 1005;
 
-int v[N];
-int w[N];
-int f[N];
+int volume[N];
+int cost[N];
 
 int main(void){
 	int n, m;
 	cin>>n>>m;
 
-	for(int i=1; i<=n; i++){
-		cin>>v[i]>>w[i];
+	vector<int> dp(m+1, 0);
+	for(int i=0; i<n; i++){
+		int v, c;
+		cin>>v>>c;
+		volume[i] = v;
+		cost[i] = c;
+		//dp[v] = c;
 	}
 
-	for(int i=0; i<=n; i++){
-		for(int j=0; j<=m; j++){
-			f[j] = max(f[j], f[j-v[i]] + w[i]);
+	for(int i=0; i<=m; i++){
+		for(int j=0; j<n; j++){
+			if(i-volume[j]>=0 && dp[i-volume[j]]+cost[j]>dp[i]){
+				dp[i] = dp[i-volume[j]]+cost[j];
+			}
 		}
 	}
-	cout<<f[m];
+
+	cout<<dp[m];
 }
+
