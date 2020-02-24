@@ -4,21 +4,23 @@
 using namespace std;
 
 int n;
-string s;
-string p;
+string s1;
+string s2;
 
 int main(void){
 	cin>>n;
-	cin>>p;
+	cin>>s1;
 	cin>>n;
-	cin>>s;
-	
-	long pos = 0;
-	while(1){
-		pos=s.find(p, pos);
-		if(pos==s.npos) break;
+	cin>>s2;
+
+	int pos = 0;
+	while(true){
+		pos = s2.find(s1, pos);
+		if(pos == s2.npos){
+			cout<<endl;
+			return 0;
+		}
 		cout<<pos<<" ";
 		pos++;
 	}
-	cout<<endl;
 }
