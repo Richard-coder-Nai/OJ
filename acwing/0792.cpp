@@ -11,18 +11,28 @@ int main(void){
 	cin>>n1>>n2;
 
 	bool neg = false;
+
 	if(n1==n2) {
 		cout<<0<<endl;
 		return 0;
 	}
 
-	if(n1<n2){
+	if(n1.length()<n2.length()){
 		neg = true;
-		string tmp = n1;
-		n1 = n2;
-		n2 = tmp;
+		swap(n1, n2);
 	}
-	//cout<<n1<<endl<<n2<<endl;
+
+	if(n1.length()==n2.length()){
+		int x = 0;
+		while(n1[x]==n2[x]){
+			x++;
+		}
+
+		if(n1[x]<n2[x]){
+			neg = true;
+			swap(n1, n2);
+		}
+	}
 
 	reverse(n1.begin(), n1.end());
 	reverse(n2.begin(), n2.end());

@@ -1,38 +1,43 @@
 #include<iostream>
-#include<list>
+#include<vector>
 
 using namespace std;
 
-list<int> table;
+vector<int> nums;
 char opt;
 
 int main(void){
 	int M;
 	cin>>M;
-	for(int i=0; i<M; i++){
+
+	while(M--){
 		cin>>opt;
 		if(opt=='H'){
 			int n;
 			cin>>n;
-			table.push_front(n);
+			nums.insert(nums.begin(), n);
 		}
-
-		if(opt=='D'){
-			int k;
-			if(k==0) 
-				table.erase(table.begin());
-			else
-				table.erase(table.begin()+k+1, table.end());
-		}
-
 		if(opt=='I'){
-			int k,x;
-			cin>>k>>x;
-			table.insert(table.begin()+k, x);
+			int k, n;
+			cin>>k>>n;
+			nums.insert(nums.begin()+k-1, n);
 		}
+		if(opt=='D'){
+			int n;
+			cin>>n;
+			if(n==0){
+				nums.erase(nums.begin());
+			}else{
+				if(n<nums.size())
+					nums.erase(nums.begin()+n+1, nums.end());
+			}
+		}
+		for(auto it:nums){
+			cout<<it<<" ";
+		}
+		cout<<endl;
 	}
-
-	for(auto it:table){
+	for(auto it:nums){
 		cout<<it<<" ";
 	}
 	cout<<endl;
