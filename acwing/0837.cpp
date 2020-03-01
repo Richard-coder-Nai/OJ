@@ -1,14 +1,17 @@
 #include<iostream>
 #include<string>
+#include<algorithm>
 
 using namespace std;
 
 int n,m;
 int father[100005];
+int size[100005];
 
 void init(){
 	for(int i=1; i<=n; i++){
 		father[i] = i;
+		size[i] = 1;
 	}
 }
 
@@ -32,6 +35,7 @@ void Union(int x, int y){
 	int fy = find_father(y);
 	if(fx!=fy){
 		father[fx] = fy;
+		size[fy] += size[fx];
 	}
 }
 
@@ -60,14 +64,7 @@ int main(void){
 		if(opt=="Q2"){
 			int n1;
 			cin>>n1;
-			int counter = 0;
-			int f = find_father(n1);
-
-			for(int j=1; j<=n; j++){
-				if(f==find_father(j)) 
-					counter++;
-			}
-			cout<<counter<<endl;
+			cout<<size[find_father(n1)]<<endl;
 		}
 	}
 }

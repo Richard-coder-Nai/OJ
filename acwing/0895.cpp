@@ -1,28 +1,27 @@
 #include<iostream>
-#include<algorithm>
 
 using namespace std;
 
-int n;
 int nums[1005];
 int f[1005];
 
-
 int main(void){
+	int n;
 	cin>>n;
+
 	for(int i=1; i<=n; i++){
 		cin>>nums[i];
 	}
 
+	int mx = -1e9-1;
 	for(int i=1; i<=n; i++){
-		f[i] = nums[i];
-		int add = 0;
-		for(int j=0; j<i; j++){
+		f[i] = 1;
+		for(int j=1; j<i; j++){
 			if(nums[i]>nums[j]){
-				add = max(add, f[j]);
+				f[i] = max(f[i], f[j]+1);
 			}
 		}
-		f[i] += add;
+		if(f[i]>mx) mx = f[i];
 	}
-	cout<<*max_element(f, f+n+1)<<endl;
+	cout<<mx<<endl;
 }
