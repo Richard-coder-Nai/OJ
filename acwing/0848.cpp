@@ -1,18 +1,16 @@
 #include<iostream>
 #include<vector>
-#include<queue>
-#include<list>
+#include<stack>
 
 using namespace std;
+
+vector<vector<int>> adj;
 
 int main(void){
 	int n, m;
 	cin>>n>>m;
-
-	vector<list<int>> adj;
-	adj.assign(n+1, list<int>());
+	adj.assign(n+1, vector<int>());
 	vector<int> indegree(n+1, 0);
-
 
 	for(int i=0; i<m; i++){
 		int src, dest;
@@ -21,36 +19,33 @@ int main(void){
 		indegree[dest]++;
 	}
 
-	queue<int> q;
+	stack<int> stk;
 	for(int i=1; i<=n; i++){
 		if(indegree[i]==0){
-			q.push(i);
+			stk.push(i);
 		}
 	}
 
-	vector<int> topo;
-	int front;
-	while(!q.empty()){
-		front = q.front();
-		topo.push_back(front);
-		q.pop();
-
-		for(auto it: adj[front]){
-			indegree[it]--;
-			if(indegree[it]==0)
-				q.push(it);
+	vector<int> path;
+	while(!stk.empty()){
+		int top = stk.top();
+		path.push_back(top);
+		stk.pop();
+		indegree[top] = -1;
+		for(auto it:adj[top]){
+			if(indegree[it>0])
+				indegree[it]--;
+			if(indegree[it]==0){
+				stk.push(it);
+			}
 		}
 	}
-
-	if(topo.size()!=n) cout<<"-1"<<endl;
-	else{
-		bool first = true;
-		for(auto it: topo){
-			if(first == false) cout<<" ";
-			cout<<it;
-			first = false;
+	if(path.size()==n){
+		for(auto it:path){
+			cout<<it<<" ";
 		}
 		cout<<endl;
+	}else{
+		cout<<-1<<endl;
 	}
-	
 }
