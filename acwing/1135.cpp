@@ -1,108 +1,100 @@
 #include<iostream>
 #include<vector>
 #include<algorithm>
-#include<map>
+#include<queue>
+#include<cstdio>
 
+#define INT_MAX 2147483647
 
 using namespace std;
 
-const int INF = 1005;
-const int  INT_MAX = 214748364;
-int n, m;
-int a, b, c, d, e;
-vector<int> family(5, 0);
-vector<vector<int>> p;
+const int INF = 100005;
 
-vector<int> path;
-vector<bool> used(5, false);
+typedef pair<int, int> PII;
+
+struct cmp{
+    bool operator() (PII a, PII b) {
+		return a.first < b.first;
+	}
+};
+
+
+vector<vector<PII>> adj;
+int n, m;
+
+vector<int> tmp;
+vector<int> used(5, false);
+vector<int> family(5, 0);
+vector<vector<int>> path;
 
 void dfs(){
-	if(path.size()==5){
-		p.push_back(path);
+	if(tmp.size()==5){
+		path.push_back(tmp);
 		return;
 	}
 	for(int i=0; i<5; i++){
 		if(used[i]==false){
 			used[i] = true;
-			path.push_back(family[i]);
+			tmp.push_back(family[i]);
 			dfs();
-			path.pop_back();
+			tmp.pop_back();
 			used[i] = false;
 		}
 	}
-	return;
 }
 
-int dijskra(vector<vector<int>> g, int src, int dest){
+
+int dijstra(int src, int dest){
 	vector<int> dist(n+1, INF);
 	vector<bool> visited(n+1, false);
-    dist[src] = 0;
-    for (int i = 0; i < n; i++){
-		int t = -1;
-        int cmp = INF;
-        for (int j = 1; j <= n; j++){
-            if (visited[j] == false && dist[j] < cmp)
-            {
-                t = j;
-                cmp = dist[j];
-            }
-        }
-        if (t == -1)
-            return -1;
-        visited[t] = true;
-        for (int j = 1; j <= n; j++)
-        {
-            if (g[t][j] != INF)
-            {
-                dist[j] = min(dist[j], dist[t] + g[t][j]);
-            }
-        }
-		if(t==dest) return dist[dest];
-    }
-    return dist[n];
+	dist[src] = 0;
+	priority_queue<PII, vector<PII>, cmp> heap;
+	heap.push({0, src});
+	while(heap.size()){
+		auto top = heap.top();
+		heap.pop();
+		int distance = top.first;
+		int node = top.second;
+		if(visited[node]) continue;
+		visited[node] = true;
+		dist[node] = distance;
+		for(auto it:adj[node]){
+			int new_node = it.first;
+			int w = it.second;
+			if(dist[new_node]==INF || dist[new_node]>dist[node]+w){
+				dist[new_node] = dist[node]+w;
+				heap.push({dist[new_node], new_node});
+			}
+		}
+	}
+	return dist[dest];
 }
 
 int main(void){
 	cin>>n>>m;
-	vector<vector<int>> g(n+1, vector<int>(n+1, INF));
+	adj.resize(n+1);
+	for(int i=0; i<5; i++){
+		cin>>family[i];
+	}
 
-	for(int i=0; i<5; i++) cin>>family[i];
+	for(int i=0; i<m; i++){
+		int a, b, c;
+		scanf("%d %d %d", &a, &b, &c);
+		if(a!=b){
+			adj[a].push_back({b, c});
+			adj[b].push_back({a, c});
+		}
+	}
 	dfs();
 
-	for(int i=0; i<=n; i++){
-		for(int j=0; j<=n; j++){
-			if(i==j) g[i][j] = 0;
-			else g[i][j] = INF;
-		}
-	}
-	
-	for(int i=0; i<m; i++){
-		int x, y, t;
-		cin>>x>>y>>t;
-		g[x][y] = t;
-		g[y][x] = t;
-	}
-
-	for(int i=0; i<5 ;i++){
-		int dist = dijskra(g, 1, family[i]);
-		g[1][family[i]] = dist;
-		g[family[i]][1] = dist;
-	}
-	for(int i=0; i<4; i++){
-		for(int j=i+1; j<5; j++){
-			int dist = dijskra(g, family[i], family[j]);
-			g[family[i]][family[j]] = dist;
-			g[family[j]][family[i]] = dist;
-		}
-	}
-
 	int res = INT_MAX;
-	for(auto it:p){
-		int dist = g[1][it[0]];
-		for(int i=1; i<5; i++){
-			dist += g[it[i-1]][it[i]];
+
+	for(auto it:path){
+		int tmp_dist = dijstra(1, it[0]);
+		for(int i=0; i<4; i++){
+			tmp_dist += dijstra(it[i], it[i+1]);
 		}
-		res = min(res, dist);
+		res = min(res, tmp_dist);
 	}
 	cout<<res<<endl;
 }

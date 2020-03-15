@@ -10,6 +10,13 @@ struct cmp{
 	}
 };
 
+typedef pari<int, int> PII;
+struct cmp2{
+    bool operator() (PII a, PII b) {
+		return a.first< b.first;
+	}
+};
+
 int main(void){
 	// default is big heap
 	priority_queue<int, vector<int>, less<int>> pq1;		//top: big
