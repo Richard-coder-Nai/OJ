@@ -14,7 +14,9 @@ using namespace std;
 #define INT_MAX 2147483647
 #define INT_MIN (-INT_MAX - 1)
 
-std::ios::sync_with_stdio(0)
+std::ios::sync_with_stdio(0);
+
+cin.sync_with_stdio(false);
 
 int main(void){
 	float x=10.0/3;
