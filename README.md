@@ -6,6 +6,7 @@ some online judge CPP code, and here is [[zyzisyz's leetcode profile]](https://l
 
 ```vimrc
 autocmd FileType cpp map <F5> <ESC>:w<CR>:!g++ -std=c++11 % && ./a.out<CR>
+autocmd BufNewFile,BufReadPre *.java nmap <F5> <ESC>:w<CR>:!javac %<cr>:!java %:r<cr>
 
 imap jj <esc>
 imap kk <esc>

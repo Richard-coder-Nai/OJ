@@ -9,7 +9,8 @@ ArrayList methods:
 	void remove(int index, E e); // add a elemnet in the index position;
 	int size(); // get the list's size
 */
-public class List_test_1 {
+
+public class ArrayList_test {
 	public static void main(String[] args){
 		List<String> list = new ArrayList<>();
 
