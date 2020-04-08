@@ -32,7 +32,7 @@ Tree_node* dfs(int is, int ie, int ps, int pe) {
 Tree_node* dfs(int ps, int pe, int is, int ie) {
 	if(ps>pe || is>ie) return NULL;
 	int k = table[post_seq[pe]];
-	Tree_node* node = new Tree_node(post_seq[pe])-is;
+	Tree_node* node = new Tree_node(post_seq[pe]);
 	node->left = dfs(ps, ps+k-1, is, is+k-1);
 	node->right = dfs(ps+k, pe-1, is+k+1, ie);
 	return node;
