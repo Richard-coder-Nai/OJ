@@ -35,10 +35,19 @@ int main(void){
 	cout << str << endl;
 
 	// stirngstream split space
+	/*
 	stringstream stream;
 	stream<<str;
 	while(stream>>str)
 		cout<<str<<endl;
+	*/
+
+	cout<<"stirngstream split space"<<endl;
+	stringstream test_s(str);
+	string sub = "";
+	while(getline(test_s, sub, ' ')){
+		cout<<sub<<endl;
+	}
 
 	//convert the string to int
 	int n;

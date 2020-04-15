@@ -8,11 +8,13 @@ int n, m;
 vector<vector<int>> g;
 vector<int> indegree;
 vector<int> path;
+vector<int> dist;
 
 int main(void){
 	cin>>n>>m;
 	g.assign(n+1, vector<int>());
 	indegree.assign(n+1, 0);
+	dist.assign(n+1, 100);
 
 	for(int i=0; i<m; i++){
 		int src, dest;
@@ -21,26 +23,23 @@ int main(void){
 		indegree[dest]++;
 	}
 
-	//priority_queue<int, vector<int>, less<int>> pq;
 	queue<int> q;
 	for(int i=1; i<=n ;i++){
 		if(indegree[i]==0){
-			//pq.push(i);
 			q.push(i);
 			path.push_back(i);
+			dist[i] = 100;
 		}
 	}
 
-	int res = 0;
-	int degree = 100;
 	while(q.empty()==false){
 		int size = q.size();
-		res += (degree*size);
 		for(int i=0; i<size; i++){
 			//int front = pq.top();
 			int front = q.front();
 			q.pop();
 			for(auto it:g[front]){
+				dist[it] = max(dist[it], dist[front]+1);
 				if(indegree[it]>0){
 					indegree[it]--;
 					if(indegree[it]==0){
@@ -50,12 +49,15 @@ int main(void){
 				}
 			}
 		}
-		degree++;
 	}
 
 	if(path.size()!=n){
 		cout<<"Poor Xed"<<endl;
 		return 0;
+	}
+	int res = 0;
+	for(int i=1; i<=n; i++){
+		res += dist[i];
 	}
 	cout<<res<<endl;
 }
