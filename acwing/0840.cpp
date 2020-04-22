@@ -10,17 +10,11 @@ int main(void){
 	char opt;
 	int num;
 	set<int> table;
-
 	for(int i=0; i<n; i++){
 		cin>>opt>>num;
-
 		if(opt=='I'){
 			table.insert(num);
 		}
-		if(opt=='Q'){
-			if(table.count(num)) cout<<"Yes"<<endl;
-			else cout<<"No"<<endl;
-		}
-
+		if(opt==''){
 	}
 }
