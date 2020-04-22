@@ -4,11 +4,21 @@ using namespace std;
 
 
 int main(void){
-	long long  a, b, p, res = 1;
+	int b, p;
+	long long a;
 	cin>>a>>b>>p;
-	for(long long i=0; i<b; i++){
-		res = res*a%p;
+	if(b==0) {
+		cout<<1%p<<endl;
+		return 0;
 	}
-	res = res%p;
+
+	long long res = 1;
+	while(b) {
+		if(b&1){
+			res = res*a % p;
+		}
+		a = a*a%p;
+		b = b>>1;
+	}
 	cout<<res<<endl;
 }
