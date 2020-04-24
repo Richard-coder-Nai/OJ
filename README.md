@@ -1,6 +1,6 @@
 # OJ
 
-some online judge CPP code, and here is [[zyzisyz's leetcode profile]](https://leetcode-cn.com/u/zyzisyz/)
+back up part of my OJ CPP code.
 
 ## vimrc
 
