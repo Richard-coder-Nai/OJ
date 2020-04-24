@@ -13,4 +13,11 @@ do
 	rm -rf $it
 done
 
+# clean vim swp file
+for it in `find -name "*.swp"`
+do
+	echo delete $it
+	rm -rf $it
+done
+
 
