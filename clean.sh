@@ -1,4 +1,10 @@
 
+# mode
+for it in `find -name "*.cpp"`
+do
+	chmod -x $it
+done
+
 # clean c++ a.out
 for it in `find -name "a.out"`
 do
