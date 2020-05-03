@@ -1,4 +1,3 @@
-
 # mode
 for it in `find -name "*.cpp"`
 do
